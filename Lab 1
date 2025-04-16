@@ -1,0 +1,65 @@
+1.	Describe the function of each:
+•	Accumulator Register (A, AX, EAX, RAX)
+Answer: The primary function of this register is to for the input and output of athematic operations. Firstly, input is taken from this register by the process and afterward the results are again given to this register. According to the amount of data different variations of the register are used as follows:
+A: It can store 8-bits or 8 digits it was the first to be introduced.
+AX: It can store 16-bits or 16 digits.
+EAX: It can store 32-bits or 32 digits.
+RAX: It can store 64-bits or 64 digits.
+•	Base Register (B, BX, EBX, RBX)
+Answer: They save only the address of the data that is stored in RAM. It also has the same types as accumulator register in order to store different amounts of data.
+•	Count Register (C, CX, ECX, RCX)
+      Answer: This register is mainly used for counting and looping functionalities in a program. It also has the same types as accumulator register and base register in order to store different amounts of data.
+•	Data Register (D, DX, EDX, RDX)
+     Answer: In order to display the output data on the screen the data is stored in the data registers. It also has the same types as accumulator register, base register and count register in order to store different amounts of data.
+2.	Describe the role of index registers in source and destination operations. Provide an example using SI and DI in an assembly instruction
+
+ Answer: Source index (SI): This register is used to reference the source operand in an instruction.
+Destination index (DI): This register is used to reference the destination operand in an instruction.
+EXAMPLE:
+ORG 100H
+.DATA
+.CODE
+MAIN PROC 
+    MOV AL,053
+    MOV BL,055
+    ADD AL,BL
+    MOV DL,AL
+    MOV AH,2H
+    INT 21H
+    MAIN ENDP
+   END MAIN
+
+In this code AL is the destination index as it stores the results of the addition performed and hence BL is the source index. Here 053 and 055 are ASCII codes.
+
+3.	Briefly describe the functions of these bits:
+•	Overflow Flag (OF)
+Answer: This flag is set if the value is a very large positive value or a very small negative value to signal overflow.
+•	Zero Flag (ZF)
+Answer: This flag is set if the output is zero.
+•	Carry Flag (CF)
+Answer: It is set if a carry or borrow has been taken from the most significant bit during the final result calculation.
+4.	Write a simple program using MOV, ADD, and SUB instructions:
+•	Move values to registers
+•	Perform addition and subtraction
+•	Store and display results
+      Answer:
+
+ORG 100H
+.DATA
+.CODE
+    MAIN PROC
+    MOV AL,053
+    MOV BL,052 
+    ADD AL,BL 
+    SUB AL,48(CONVERT ASCII TO DECIMAL)
+    MOV DL,AL
+    MOV AH,2H
+    INT 21H  
+    MOV AL,050
+    MOV BL,049
+    SUB AL,BL
+    ADD AL,48(CONVERT ASCII TO DECIMAL)
+    MOV DL,AL
+    INT 21H
+    MAIN ENDP
+    END MAIN
