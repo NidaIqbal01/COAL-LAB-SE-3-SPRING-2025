@@ -1,0 +1,63 @@
+//Task 1
+ORG 100H
+.STACK 100H
+.MODEL 
+.DATA
+.CODE
+MAIN PROC
+    MOV DL,'S'
+    MOV AH,2H
+    INT 21H   
+    MOV DL,'A'
+    MOV AH,2H
+    INT 21H
+    MOV DL,'P'
+    MOV AH,2H
+    INT 21H
+    MOV DL,'I'
+    MOV AH,2H
+    INT 21H    
+    MOV DL,'D'
+    MOV AH,2H
+    INT 21H 
+    MOV DL,':'
+    MOV AH,2H
+    INT 21H
+    MOV DL,'5'
+    MOV AH,2H
+    INT 21H
+    MOV DL,'8'
+    MOV AH,2H
+    INT 21H
+    MOV DL,'9'
+    MOV AH,2H
+    INT 21H
+    MOV DL,'7'
+    MOV AH,2H
+    INT 21H 
+    MOV DL,'6'
+    MOV AH,2H
+    INT 21H
+    MAIN ENDP
+END MAIN
+//Task 2
+ORG 100H
+.DATA
+.CODE
+    MAIN PROC   
+       
+    MOV AH,1H  
+    INT 21H
+    SUB AL,30H 
+    MOV DL,AL
+    MOV AH,1H
+    INT 21H 
+    SUB AL,30H
+    ADD DL,AL 
+    ADD DL,30H
+    MOV AH,2H
+    INT 21H 
+     
+       MOV AH,4CH
+    MAIN ENDP
+END MAIN
