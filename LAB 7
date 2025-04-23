@@ -1,0 +1,112 @@
+//task 1
+org 100h
+.stack 100h
+.model small
+.data 
+.code
+main proc
+    mov cx,5
+    mov dx,49
+    PrintOddDigits:
+    mov ah,2
+    int 21h
+    add dx,2
+    Loop PrintOddDigits
+    mov ah,4ch
+    int 21h
+    main endp
+end main
+//task 2
+org 100h
+.stack 100h
+.model small
+.data 
+.code
+main proc
+    mov cx,5
+    mov dx,56
+    PrintEvenDigits:
+    mov ah,2
+    int 21h
+    sub dx,2
+    Loop PrintEvenDigits
+    mov ah,4ch
+    int 21h
+    main endp
+end main
+//task 3
+org 100h
+.stack 100h
+.model small
+.data 
+.code
+main proc
+    mov cx,2
+    mov dx,48
+    PrintAdd:
+    add dx,1
+    inc dx
+    Loop PrintAdd
+    sub dx,1
+     mov ah,2
+int 21h
+         mov ah,4ch
+    int 21h
+    main endp
+end main   
+//task 4
+org 100h
+.model small
+.stack 100h
+.data
+.code
+main proc
+    mov ah,1
+    int 21h
+    mov cx,10
+    mov dx,ax
+        PrintChar:
+        mov ah,2
+        int 21h
+  
+        Loop PrintChar
+        mov ah,4ch
+        int 21h
+        main endp
+       end main
+//task 5
+   org 100h
+.model small
+.stack 100h
+.data
+.code
+main proc
+    mov cx,26
+    mov dx,97
+    PrintSmallAlphabet:
+        mov ah,2
+    int 21h
+    add dx,1
+    Loop PrintSmallAlphabet
+    mov ah,4ch
+    int 21h
+    main endp
+end main
+//task 6
+   org 100h
+.model small
+.stack 100h
+.data
+.code
+main proc
+    mov cx,10
+    mov dx,57
+    PrintReverseNumber:
+        mov ah,2
+    int 21h
+    sub dx,1
+    Loop PrintReverseNumber
+    mov ah,4ch
+    int 21h
+    main endp
+end main
