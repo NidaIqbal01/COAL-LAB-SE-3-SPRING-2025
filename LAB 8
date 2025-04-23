@@ -1,0 +1,129 @@
+//task 1
+.MODEL SMALL
+.STACK 100H
+
+.DATA  
+    A DW 5      
+    B DW 3      
+    msgLess DB 'A is Less than B$'
+    msgGreater DB 'A is Greater than B$'
+
+.CODE
+MAIN proc
+    MOV AX, @DATA   
+    MOV DS, AX      
+
+    MOV AX, A    
+    CMP AX, B       
+    JG Greater       
+    MOV DX, OFFSET msgLess
+    MOV AH, 09H
+    INT 21H
+    JMP EXIT        
+
+Greater:
+    MOV DX, OFFSET msgGreater
+    MOV AH, 09H
+    INT 21H
+
+EXIT:
+    MOV AH, 4CH     
+    INT 21H
+           main endp
+END MAIN
+//task 2
+.MODEL SMALL
+.STACK 100H
+
+.DATA  
+    msgPositive DB 'The number is positive$'
+    msgZero DB 'The number is zero$'
+
+.CODE
+MAIN Proc
+    MOV AX, @DATA   
+    MOV DS, AX      
+    MOV AH, 1
+    INT 21H       
+    SUB AL, '0'   
+    CMP AL, 0
+    JG Positive
+    MOV DX, OFFSET msgZero
+    MOV AH, 09H
+    INT 21H
+    JMP EXIT
+Positive:
+    MOV DX, OFFSET msgPositive
+    MOV AH, 09H
+    INT 21H
+
+EXIT:
+    MOV AH, 4CH
+    INT 21H
+          main endp
+END MAIN
+//task 3
+.MODEL SMALL
+.STACK 100H
+
+.DATA  
+    msgOdd DB 'The number is odd$'
+    msgEven DB 'The number is even$'
+
+.CODE
+MAIN Proc
+    MOV AX, @DATA   
+    MOV DS, AX      
+    MOV AH, 1
+    INT 21H       
+    SUB AL, '0'
+    MOV BL,2
+    MOV AH,0
+    DIV BL   
+    CMP AH, 0
+    JE Even
+    MOV DX, OFFSET msgOdd
+    MOV AH, 09H
+    INT 21H
+    JMP EXIT
+Even:
+    MOV DX, OFFSET msgEven
+    MOV AH, 09H
+    INT 21H
+
+EXIT:
+    MOV AH, 4CH
+    INT 21H
+          main endp
+END MAIN
+//task 4
+.MODEL SMALL
+.STACK 100H
+
+.DATA  
+    msg1 DB 'Need hard work$'
+    msg2 DB 'Satisfactory$'
+
+.CODE
+MAIN Proc
+    MOV AX, @DATA   
+    MOV DS, AX      
+    MOV AH, 1
+    INT 21H       
+    SUB AL, '0'  
+    CMP AL, 5
+    JGE Marks
+    MOV DX, OFFSET msg1
+    MOV AH, 09H
+    INT 21H
+    JMP EXIT
+Marks:
+    MOV DX, OFFSET msg2
+    MOV AH, 09H
+    INT 21H
+
+EXIT:
+    MOV AH, 4CH
+    INT 21H
+          main endp
+END MAIN
